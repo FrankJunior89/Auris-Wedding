@@ -1,0 +1,387 @@
+/* -------------------- RESET DE BASE -------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background: #fff5f7;
+  color: #333;
+  text-align: center;
+}
+
+/* -------------------- NAVBAR -------------------- */
+.navbar {
+  background-color: #fff;
+  padding: 10px 20px;
+  z-index: 10; /* Priorité d'affichage */
+}
+
+.navbar nav {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 8px 12px;
+  display: block;
+}
+
+/* --- Dropdown (caché par défaut) --- */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 160px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.dropdown-menu li a {
+  padding: 10px;
+  z-index: 20; 
+  color: #333;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+}
+
+/* --- Afficher le menu au survol --- */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+/* -------------------- HERO -------------------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80vh; /* pour le centrer verticalement dans la page */
+}
+
+.hero h1 {
+  font-family: 'Great Vibes', cursive; /* Une belle font romantique */
+  font-size: 4rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+#countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* espace entre les blocs */
+  flex-wrap: wrap; /* pour s'adapter sur petit écran */
+  margin-top: 1rem;
+}
+
+#countdown div {
+  background: white;
+  color: #333;
+  padding: 20px 25px;
+  border-radius: 10px;
+  min-width: 80px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#countdown .number {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#countdown .label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/*------- STORY ---------- */
+.story-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
+  text-align: center;
+}
+
+.story-section h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #d63384;
+}
+
+.story-section .intro {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: #d63384;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.timeline-item {
+  padding: 2rem;
+  position: relative;
+  width: 50%;
+}
+
+.timeline-item img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.timeline-item .content {
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: left;
+  animation: fadeInUp 1s ease both;
+}
+
+.timeline-item.left { left: 0; }
+.timeline-item.right { left: 50%; }
+
+.timeline-item.left::before,
+.timeline-item.right::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border: 4px solid #d63384;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item.left::before { right: -13px; }
+.timeline-item.right::before { left: -13px; }
+
+/* Animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .timeline::after { left: 20px; }
+  .timeline-item {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 25px;
+  }
+  .timeline-item.right { left: 0; }
+  .timeline-item.left::before { left: 0; }
+  .timeline-item.right::before { left: 0; }
+}
+
+/* -------- TOURISME -------- */
+.tourisme-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
+  text-align: center;
+}
+
+.tourisme-section h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #d63384;
+}
+
+.tourisme-section .intro {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+/* Grille des cartes */
+.tourisme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Carte individuelle */
+.tourisme-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tourisme-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.tourisme-card h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin: 1rem 0 0.5rem;
+}
+
+.tourisme-card p {
+  font-size: 0.9rem;
+  color: #666;
+  padding: 0 1rem;
+  flex-grow: 1;
+}
+
+.tourisme-card a {
+  display: inline-block;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  background-color: #d63384;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.tourisme-card a:hover {
+  background-color: #b0256c;
+}
+
+.tourisme-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* -------- DÍA DE LOS MUERTOS -------- */
+.muertos-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(to bottom right, #2b0f3a, #ff6f3c);
+  color: white;
+  text-align: center;
+}
+
+.muertos-section h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.muertos-section .intro {
+  font-style: italic;
+  opacity: 0.85;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grille des cartes */
+.muertos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Carte individuelle */
+.muertos-card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.muertos-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(255, 180, 0, 0.4);
+}
+
+.muertos-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.muertos-card h3 {
+  font-size: 1.3rem;
+  margin: 1rem 0 0.5rem;
+  color: #ffde89;
+}
+
+.muertos-card p {
+  font-size: 0.9rem;
+  color: #f1f1f1;
+  padding: 0 1rem 1rem;
+}
+/* -------------------- SECTIONS GÉNÉRALES -------------------- */
+section {
+  padding: 2rem 1rem;
+}
+
+/* -------------------- FOOTER -------------------- */
+footer {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #ffccd5;
+}

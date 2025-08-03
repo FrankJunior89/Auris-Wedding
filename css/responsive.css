@@ -1,0 +1,21 @@
+/* Tablettes */
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  .navbar a {
+    margin: 0 2rem;
+  }
+}
+
+/* Ordinateurs */
+@media (min-width: 1024px) {
+  body {
+    font-size: 20px;
+  }
+
+  .hero {
+    padding: 5rem 2rem;
+  }
+}
