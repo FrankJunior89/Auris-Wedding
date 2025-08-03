@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Omar & Auris </title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    /* Animation d'apparition douce */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -31,10 +46,13 @@
   </nav>
 </header>
 
-<h1>🚂 LOGISTIQUE </h1>
+
 
 
 <section class="logistique-section">
+
+  <h1>🚂 Logistique </h1>
+  <br>
   <div class="logistique-card logistique-flex">
 
         <!-- Colonne gauche : Texte -->
@@ -46,6 +64,7 @@
       <p>
         Tous les événements (mariage religieux, réception, etc.) se tiennent à Mexico City ou ses alentours.
       </p>
+      <br>
       <p>
         🔄 Une fois sur place, <strong>Uber, Didi ou Cabify</strong> fonctionnent très bien.<br>
         Le métro et Metrobús sont efficaces mais évitez les heures de pointe (8h–10h / 18h–20h) 
@@ -124,6 +143,110 @@
     <p class="important">⚠️ Notre sélection est basée sur nos recherches, sans réduction garantie.</p>
   </div>
 </section>
+
+  <!-- Section REMARQUES PRATIQUES -->
+  <section class="fade-in py-10 px-6 md:px-20 bg-gradient-to-r from-yellow-100 via-orange-50 to-yellow-100">
+    <h2 class="text-3xl font-bold mb-6">🎒 À NE PAS OUBLIER / REMARQUES PRATIQUES</h2>
+    <ul class="list-disc pl-6 space-y-3">
+      <li>Pour les invités venant de France, Cameroun, Canada, USA, Belgique, Suisse — pensez à adapter les recherches de logement pour familles, enfants, personnes âgées ou à mobilité réduite (prévoir des étages bas, ascenseurs, etc.).</li>
+      <li>Pour les invités avec bébés/enfants : choisir hébergement proche d’un supermarché & pharmacie.</li>
+      <li>Eau : boire de l’eau filtrée en bouteille ou dans des pailles scellées.</li>
+      <li>Bagages légers recommandés : Metrobond cart ne tolère qu’un petit sac ; évitez la ligne B (zone sensible : Tepito, Gustavo A. Madero).</li>
+    </ul>
+  </section>
+
+  <!-- Section TRANSPORTS -->
+  <section class="fade-in py-10 px-6 md:px-20 bg-white">
+    <h2 class="text-3xl font-bold mb-6">📞 Infos Pratiques & Contacts Utiles</h2>
+
+    <h3 class="text-2xl font-semibold mt-6 mb-4">🚖 Taxis & Transports</h3>
+    <p class="mb-4">Uber/Didi est recommandé la nuit ou si vous n’êtes pas sûr·e de marcher tard.</p>
+    <p class="mb-2">Pour vos trajets entre l’aéroport et votre logement ou entre les différents lieux du mariage :</p>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Taxi Radio Sitio 300 (service 24h/24)  
+        📞 +52 55 5562 8054 | 💬 WhatsApp : +52 55 1334 6244  
+        🌐 <a href="https://taxiradiositio300.com/" class="text-blue-600 underline">Site officiel</a>  
+        ✅ Réservation à l’avance possible. Paiement cash ou carte.
+      </li>
+    </ul>
+    <p class="mb-4 font-semibold">Conseils :</p>
+    <ul class="list-disc pl-6 space-y-2">
+      <li>À l’aéroport, évitez les taxis non officiels.</li>
+      <li>Uber ou Didi restent une bonne option.</li>
+      <li>Location de van recommandée pour les grands groupes.</li>
+      <li>Toujours vérifier la destination et le tarif avant le départ.</li>
+    </ul>
+  </section>
+
+  <!-- Section LOCATION VOITURES -->
+  <section class="fade-in py-10 px-6 md:px-20 bg-gradient-to-r from-green-50 to-green-100">
+    <h3 class="text-2xl font-semibold mb-4">🚗 Location de voitures</h3>
+    <p class="mb-4">Simulation pour Mexico City du 23 au 30 octobre 2025 :</p>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <h4 class="font-bold mb-2">✅ Expedia</h4>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Minivan/SUV : 500 – 800 CAD</li>
+          <li>Oversize van : 900 – 1100 CAD</li>
+          <li>+ Interface simple, bonnes offres internationales</li>
+          <li>- Moins de transparence sur assurances locales</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">✅ Kayak</h4>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Minivan 7 pax : ~665 CAD</li>
+          <li>Minivan 8 pax : ~731 CAD</li>
+          <li>Plateforme de comparaison précise avec filtres utiles</li>
+          <li>Tarifs compétitifs si réservation à l’avance</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">✅ Momondo</h4>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Van 7–8 pax : ~80–90 CAD/jour → 560 – 630 CAD/semaine</li>
+          <li>Prix jour très clair, filtres selon capacité/transmission</li>
+          <li>Affiche agences locales comme America Car Rental</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">✅ DiscoverCars</h4>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Van estimé 120 CAD/jour → 840 CAD/semaine</li>
+          <li>Clarté des inclusions (assurance, franchise)</li>
+          <li>Agences locales et internationales</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="mt-6 font-semibold">💡 Conseils :</p>
+    <ul class="list-disc pl-6 space-y-2">
+      <li>🔒 Réservez tôt pour économiser</li>
+      <li>📋 Vérifiez les assurances incluses (responsabilité civile obligatoire)</li>
+      <li>📆 Attention au programme <b>“Hoy No Circula”</b> à Mexico (choisir véhicule hologramme “0” ou “00”)</li>
+    </ul>
+  </section>
+
+  <!-- Section URGENCES -->
+  <section class="fade-in py-10 px-6 md:px-20 bg-white">
+    <h3 class="text-2xl font-semibold mb-4">🆘 Numéros d’urgence locaux</h3>
+    <ul class="list-disc pl-6 space-y-2">
+      <li>Urgence générale (police, ambulance, pompiers) : 📞 911</li>
+      <li>Police touristique CDMX : 📞 +52 55 5207 4155 / 55 5207 4156</li>
+      <li>Ambassade de France à Mexico : 📞 +52 55 9171 9700 | 
+        <a href="mailto:consulat.mexico-amba@diplomatie.gouv.fr" class="text-blue-600 underline">Email</a> |
+        <a href="https://mx.ambafrance.org/" class="text-blue-600 underline">Site</a>
+      </li>
+      <li>Ambassade du Cameroun : 📞 +52 55 5281 4151 | 
+        <a href="mailto:ambacamerounmexique@cablevision.net.mx" class="text-blue-600 underline">Email</a>
+      </li>
+      <li>Ambassade du Canada : 📞 +52 55 5724 7900 | 
+        <a href="mailto:mxico-cs@international.gc.ca" class="text-blue-600 underline">Email</a> |
+        <a href="https://www.canadainternational.gc.ca/mexico-mexique/" class="text-blue-600 underline">Site</a>
+      </li>
+    </ul>
+  </section>
 
 
 
