@@ -3,36 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RSVP - Frank & [Nom]</title>
+  <title> Omar & Auris </title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <header class="navbar">
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="about.html">Notre Histoire</a>
-      <a href="rsvp.html" class="active">RSVP</a>
-    </nav>
-  </header>
 
-  <section class="rsvp">
-    <h1>Confirmez votre présence</h1>
-    <form>
-      <input type="text" placeholder="Nom complet" required>
-      <input type="email" placeholder="Email" required>
-      <select required>
-        <option value="">Je participe...</option>
-        <option value="oui">Oui</option>
-        <option value="non">Non</option>
-      </select>
-      <button type="submit">Envoyer</button>
-    </form>
-  </section>
+  <!-- HEADER -->
+<header class="navbar">
+  <nav>
+    <ul class="menu">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">Notre Histoire</a></li>
+      <li><a href="gifts.html">Cadeaux</a></li>
+      <li><a href="padrinos.html">Padrinos</a></li>
+      <li><a href="rsvp.html">RSVP</a></li>
+      <li class="dropdown">
+        <a href="#">Plus ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="logistique.html">Logistique</a></li>
+          <li><a href="tourisme.html">Tourisme</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
 
-  <footer>
-    <p>Merci de célébrer avec nous 💕</p>
-  </footer>
+<!-- SECTION RSVP -->
+<section class="rsvp-section">
+<h1>💌 Confirmez votre présence</h1>
+<p class="intro">Nous avons hâte de célébrer avec vous ! Merci de remplir le formulaire ci-dessous pour nous aider à mieux nous organiser 💕</p>
 
+<form class="rsvp-form" action="https://formspree.io/f/xrblaoed" method="post">
+<div class="form-group">
+<label for="name">Nom complet</label>
+<input type="text" id="name" name="name" placeholder="Votre nom" required>
+</div>
+
+<div class="form-group">
+<label for="email">Adresse e-mail</label>
+<input type="email" id="email" name="email" placeholder="votremail@example.com" required>
+</div>
+
+<div class="form-group">
+<label for="guests">Nombre de personnes</label>
+<select id="guests" name="guests" required>
+<option value="" disabled selected>Choisir...</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4+">4 ou plus</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="attendance">Présence</label>
+<select id="attendance" name="attendance" required>
+<option value="" disabled selected>Choisir...</option>
+<option value="yes">Oui, je serai là 🎉</option>
+<option value="no">Désolé, je ne pourrai pas venir 💔</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="message">Message (optionnel)</label>
+<textarea id="message" name="message" rows="4" placeholder="Un petit mot pour nous 💌"></textarea>
+</div>
+
+<button type="submit" class="btn-submit">Envoyer ma réponse</button>
+</form>
+
+
+</section>
+
+
+
+  <script src="js/countdown.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
