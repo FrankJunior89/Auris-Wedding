@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Omar & Auris </title>
+  <title>Galerie - Omar & Auris</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-
-  <!-- HEADER -->
+<!-- HEADER -->
 <header class="navbar">
   <nav>
     <ul class="menu">
@@ -23,7 +22,7 @@
         <ul class="dropdown-menu">
           <li><a href="logistique.html">Logistique</a></li>
           <li><a href="tourisme.html">Tourisme</a></li>
-          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="galerie.html" class="active">Galerie</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </li>
@@ -31,8 +30,49 @@
   </nav>
 </header>
 
+<!-- SECTION GALERIE -->
+<section class="galerie-section">
+  <h1>📸 Souvenirs du Grand Jour</h1>
+  <div class="story-deco"></div>
+  <p class="intro">Revivez la magie de notre mariage à travers ces instants précieux 💛</p>
 
-  <script src="js/countdown.js"></script>
-  <script src="js/script.js"></script>
+  <div class="galerie-grid">
+    <div class="galerie-item"><img src="img/backgrounds/aquarium-michin.jpg" alt="Photo 1"></div>
+    <div class="galerie-item tall"><img src="img/galerie2.jpg" alt="Photo 2"></div>
+    <div class="galerie-item wide"><img src="img/galerie3.jpg" alt="Photo 3"></div>
+    <div class="galerie-item"><img src="img/galerie4.jpg" alt="Photo 4"></div>
+    <div class="galerie-item wide"><img src="img/galerie5.jpg" alt="Photo 5"></div>
+    <div class="galerie-item tall"><img src="img/galerie6.jpg" alt="Photo 6"></div>
+    <div class="galerie-item"><img src="img/galerie7.jpg" alt="Photo 7"></div>
+    <div class="galerie-item"><img src="img/galerie8.jpg" alt="Photo 8"></div>
+    <div class="galerie-item wide"><img src="img/galerie9.jpg" alt="Photo 9"></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+</div>
+
+<script>
+  // --- Lightbox JS ---
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.close');
+
+  document.querySelectorAll('.galerie-item img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+    });
+  });
+
+  closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+  lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox) lightbox.style.display = 'none';
+  });
+</script>
+
 </body>
 </html>

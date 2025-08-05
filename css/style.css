@@ -8,7 +8,7 @@
 body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
-  background: #fff5f7;
+  background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
   color: #333;
   text-align: center;
 }
@@ -670,4 +670,293 @@ footer {
   margin-top: 2rem;
   padding: 1rem;
   background: #ffccd5;
+}
+
+.teasers-with-photos {
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* --- Photos décoratives --- */
+.home-photos img {
+  position: absolute;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  object-fit: cover;
+  transition: 0.5s ease;
+  opacity: 0.9;
+}
+
+.home-photos .photo1 {
+  top: 0;
+  left: -80px;
+  width: 280px;
+  height: 380px;
+  transform: rotate(-5deg);
+}
+
+.home-photos .photo2 {
+  top: 150px;
+  right: -70px;
+  width: 250px;
+  height: 340px;
+  transform: rotate(5deg);
+}
+
+.home-photos .photo3 {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 320px;
+  height: 420px;
+  opacity: 0.85;
+}
+
+.home-photos img:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+/* --- Texte flottant --- */
+.teasers-overlay {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+  z-index: 3;
+}
+
+.teaser-text h2 {
+  font-family: 'Playfair Display', serif;
+  color: #d63384;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.teaser-text p {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* --- Bouton transparent stylé --- */
+.btn-transparent {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #d63384;
+  color: #d63384;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-transparent:hover {
+  background: #d63384;
+  color: white;
+  box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3);
+}
+
+/* --- Responsive --- */
+@media screen and (max-width: 768px) {
+  .home-photos img {
+    opacity: 0.2;
+    transform: rotate(0deg);
+  }
+  .teaser-text h2 { font-size: 1.6rem; }
+}
+
+/* --- PAGE NOTRE HISTOIRE --- */
+.story-full {
+  background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.story-full h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #d63384;
+}
+
+.story-deco {
+  font-size: 1.5rem;
+  color: #d63384;
+  margin-bottom: 3rem;
+}
+
+.story-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.story-text {
+  flex: 1 1 500px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  text-align: justify;
+}
+
+.story-photos {
+  flex: 1 1 300px;
+  position: relative;
+  min-width: 250px;
+}
+
+.story-photos img {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  position: absolute;
+  transition: transform 0.3s ease;
+}
+
+.story-photos .photo-top {
+  top: 0;
+  left: 0;
+  transform: rotate(-4deg);
+}
+
+.story-photos .photo-bottom {
+  top: 120px;
+  right: 0;
+  transform: rotate(5deg);
+}
+
+.story-photos img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .story-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .story-photos {
+    position: static;
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .story-photos img {
+    position: static;
+    transform: none;
+    max-width: 45%;
+  }
+}
+
+/* --- PAGE GALERIE --- */
+.galerie-section {
+  background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.galerie-section h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #d63384;
+}
+
+.galerie-section .intro {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+/* --- Grille photo romantique --- */
+.galerie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 200px;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.galerie-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.galerie-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Variation de tailles pour effet "masonry" */
+.galerie-item.wide { grid-column: span 2; }
+.galerie-item.tall { grid-row: span 2; }
+
+.galerie-item:hover img {
+  transform: scale(1.08);
+}
+
+/* --- Petit cœur au survol --- */
+.galerie-item::after {
+  content: "♥";
+  color: rgba(255,255,255,0.8);
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.galerie-item:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* --- Lightbox --- */
+#lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+#lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
 }
