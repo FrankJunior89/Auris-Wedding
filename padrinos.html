@@ -1,22 +1,156 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Omar & Auris </title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Padrinos – Omar & Auris</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --rose:#d63384;
+      --bg-soft:#fff5f7;
+      --bg-grad:#ffffff;
+      --text:#333;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(214,51,132,.12);
+      --shadow-soft:0 6px 18px rgba(0,0,0,.08);
+    }
+
+    /* HERO */
+    .hero-pad{
+      background:var(--bg-grad);
+      padding:4.5rem 1rem 3rem;
+      text-align:center;
+    }
+    .hero-pad h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.2rem,4vw,3rem);
+      color:var(--rose);
+      margin:0 0 .3rem;
+    }
+    .hero-pad p{max-width:950px;margin:.25rem auto 0;color:#555;font-style:italic;line-height:1.7}
+
+    /* CARTES TEXTE */
+    .wrap{max-width:1100px;margin:0 auto;padding:0 1rem}
+    .card{
+      background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+      padding:1.25rem 1.25rem;margin:1rem 0;line-height:1.8;color:var(--text);
+    }
+    .chunk-title{display:flex;align-items:center;gap:.6rem;font-weight:700;color:var(--rose);margin:.2rem 0 .6rem;justify-content:center;text-align:center}
+
+    /* NOMMAGE LISTE (pour ta liste de prénoms déjà donnée) */
+    .names-cloud{
+      display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:.5rem
+    }
+    .name-chip{
+      background:#fff;border:1px solid #f5cadd;color:#8a2c5a;
+      border-radius:999px;padding:.35rem .8rem;box-shadow:var(--shadow-soft);
+      font-weight:600
+    }
+
+    /* GALERIE PADRINOS (dynamique) */
+    .padrinos{
+      margin:2rem 0 0;padding:1rem 0 3rem;
+    }
+    .padrinos .head{
+      display:flex;gap:.6rem;align-items:center;justify-content:space-between;flex-wrap:wrap;
+      margin-bottom:.8rem;
+    }
+    .padrinos h2{
+      font-family:'Playfair Display',serif;color:var(--rose);margin:0;
+      font-size:clamp(1.8rem,3.6vw,2.3rem)
+    }
+    .actions{display:flex;gap:.5rem;flex-wrap:wrap}
+    .btn,.btn-outline{
+      display:inline-flex;align-items:center;gap:.4rem;
+      padding:.6rem .9rem;border-radius:12px;border:2px solid var(--rose);
+      text-decoration:none;cursor:pointer;transition:.25s;user-select:none;
+      font-weight:600
+    }
+    .btn{background:var(--rose);color:#fff}
+    .btn:hover{box-shadow:0 10px 20px rgba(214,51,132,.25);transform:translateY(-1px)}
+    .btn-outline{color:var(--rose);background:#fff}
+    .btn-outline:hover{background:var(--rose);color:#fff}
+
+    /* Zone drag & drop */
+    .drop{
+      background:var(--bg-soft);
+      border:2px dashed var(--rose);
+      border-radius:14px;padding:1rem;text-align:center;color:#8a2c5a;
+      box-shadow:var(--shadow-soft);margin-bottom:1rem;
+    }
+    .drop strong{color:var(--rose)}
+    .drop.dragover{background:#ffe9f1}
+
+    /* Grille tuiles */
+    .grid{
+      display:grid;gap:1rem;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    }
+    .tile{
+      background:#fff;border-radius:18px;box-shadow:var(--shadow-soft);
+      padding:1rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;position:relative
+    }
+    .avatar{
+      width:110px;height:110px;border-radius:50%;object-fit:cover;background:#f7d9e6;
+      border:4px solid #fde3ee;box-shadow:0 6px 16px rgba(0,0,0,.07)
+    }
+    .tile h4{margin:.2rem 0;color:#8a2c5a;text-align:center}
+    .tile .mini{
+      display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center
+    }
+    .mini button{
+      border:none;border-radius:10px;padding:.35rem .6rem;cursor:pointer;background:#f9f9fb;
+      box-shadow:var(--shadow-soft);font-weight:600;color:#6a2a4b
+    }
+    .mini button:hover{background:#ffe2ee}
+    .drag-handle{
+      position:absolute;top:8px;left:8px;font-size:1.1rem;color:#c45c8a;cursor:grab
+    }
+
+    /* Modale ajout/édition */
+    .modal{
+      position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:9999
+    }
+    .modal.show{display:flex}
+    .modal .box{
+      background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:1rem;max-width:420px;width:92%;
+    }
+    .form-row{display:flex;flex-direction:column;gap:.35rem;margin:.5rem 0}
+    .form-row input[type="text"]{padding:.6rem .7rem;border-radius:10px;border:1px solid #f2c1d7}
+    .form-row input[type="file"]{padding:.4rem;background:#fff5f7;border-radius:10px;border:1px dashed #f2c1d7}
+    .modal .actions{display:flex;justify-content:flex-end;gap:.5rem;margin-top:.6rem}
+
+    /* Diaporama plein écran */
+    .slideshow{position:fixed;inset:0;background:#000;display:none;align-items:center;justify-content:center;z-index:9998}
+    .slideshow.show{display:flex}
+    .slide-inner{max-width:min(90vw,1100px);text-align:center;color:#fff}
+    .slide-photo{max-width:70vw;max-height:65vh;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.45);display:block;margin:0 auto}
+    .slide-name{font-family:'Playfair Display',serif;font-size:2rem;margin-top:.7rem}
+    .slide-ctrls{display:flex;justify-content:center;gap:.6rem;margin-top:.6rem}
+    .slide-ctrls button{border:none;border-radius:999px;padding:.55rem .8rem;font-weight:700;cursor:pointer}
+    .slide-ctrls .next,.slide-ctrls .prev{background:#fff;color:#8a2c5a}
+    .slide-ctrls .close{background:#ffe3ee;color:#8a2c5a}
+
+    /* Toast */
+    .toast{
+      position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+      background:#111;color:#fff;padding:.7rem 1rem;border-radius:10px;opacity:0;pointer-events:none;
+      transition:opacity .25s, transform .25s;box-shadow:0 8px 20px rgba(0,0,0,.25);z-index:99999;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(-4px);}
+  </style>
 </head>
 <body>
 
-
-  <!-- HEADER -->
 <header class="navbar">
   <nav>
     <ul class="menu">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="about.html">Notre Histoire</a></li>
       <li><a href="gifts.html">Cadeaux</a></li>
-      <li><a href="padrinos.html">Padrinos</a></li>
+      <li><a href="padrinos.html" class="active">Padrinos</a></li>
       <li><a href="rsvp.html">RSVP</a></li>
       <li class="dropdown">
         <a href="#">Plus ▾</a>
@@ -31,8 +165,60 @@
   </nav>
 </header>
 
+<!-- HERO -->
+<section class="hero-pad">
+  <h1>🌟 Padrinos & Madrinas</h1>
+  <p>Une célébration partagée, un lien de famille. Merci du fond du cœur à celles et ceux qui ont choisi de marcher à nos côtés — dans la lumière comme dans l’ombre, avec un sourire, un geste, un conseil, une présence.</p>
+</section>
 
-  <script src="js/countdown.js"></script>
-  <script src="js/script.js"></script>
+<!-- TEXTE (fidèle à ton contenu) -->
+<div class="wrap">
+  <article class="card">
+    <p>Dans la culture mexicaine, les grands moments de la vie — naissance, baptême, mariage — ne se vivent jamais seuls. Ils se célèbrent entourés, soutenus, accompagnés. C’est là qu’intervient la tradition des padrinos : littéralement « parrains et marraines », mais bien au-delà du sens religieux.</p>
+  </article>
+
+  <article class="card">
+    <div class="chunk-title">🌱 Une racine ancienne</div>
+    <p>Cette coutume remonte à l’époque coloniale, lorsque les familles — souvent modestes — faisaient appel à leurs proches pour traverser les grandes étapes de la vie. Les padrinos devenaient des guides, choisis pour leur sagesse, leur bienveillance ou leur lien intime avec ceux qu’ils accompagnaient.</p>
+    <p>Avec le temps, cette pratique est devenue une composante essentielle des mariages mexicains. Être padrino, c’est s’engager dans un geste d’amour : veiller sur les mariés, les accompagner dans leur chemin, et inscrire leur union dans une chaîne de solidarité, de mémoire et de tendresse.</p>
+  </article>
+
+  <article class="card">
+    <div class="chunk-title">💛 Une tradition vivante</div>
+    <p>Aujourd’hui encore, un mariage au Mexique ne se fait pas sans padrinos. Certains prennent en charge un élément de la cérémonie — les alliances, la bible, le lazo. D’autres soutiennent l’organisation, la musique, la décoration, ou offrent simplement leur présence, leur sourire, leur cœur ouvert.</p>
+    <p>Les padrinos ne sont pas que des témoins. Ils bénissent, soutiennent, inspirent. Ils forment un cercle invisible mais essentiel, celui qui relie le couple à sa communauté.</p>
+    <p>Pour notre union, nous avons voulu faire vivre cette tradition avec sens et simplicité. Nous avons partagé une vision, une liste de gestes et de symboles. Puis nous avons laissé chacun·e — familles et ami·es — se proposer librement, à sa mesure. Pour offrir un objet, accompagner un geste, alléger une tâche ou enchanter un instant.</p>
+    <p>Dans la lumière ou dans l’ombre. Dans l’action ou dans la présence silencieuse. Avec un conseil soufflé au bon moment. Un message à minuit. Un rire dans les préparatifs.</p>
+    <p>C’est ainsi qu’est née notre constellation de padrinos. Unie, généreuse, précieuse. Notre mariage est façonné par vos mains. Il s’ancre dans votre tendresse et il avance grâce à votre force.</p>
+    <p><strong>Merci du fond du cœur à chacun·e d’entre vous. Ce mariage, c’est aussi le vôtre.</strong></p>
+  </article>
+
+  <!-- Liste des prénoms en nuage -->
+  <article class="card">
+    <div class="chunk-title">✨ Avec toute notre gratitude</div>
+    <div class="names-cloud" id="namesCloud">
+      <!-- Tu peux modifier ici si tu veux les “fixer” en dur -->
+      <span class="name-chip">François</span>
+      <span class="name-chip">Aurélien</span>
+      <span class="name-chip">Arturo</span>
+      <span class="name-chip">Louisette</span>
+      <span class="name-chip">Margarita &amp; Carolina</span>
+      <span class="name-chip">Diana</span>
+      <span class="name-chip">Anne</span>
+      <span class="name-chip">Anselme</span>
+      <span class="name-chip">Rafael</span>
+      <span class="name-chip">Frank</span>
+      <span class="name-chip">Luis</span>
+      <span class="name-chip">Marlene</span>
+      <span class="name-chip">Atlanta</span>
+      <span class="name-chip">Daniel</span>
+      <span class="name-chip">Diana &amp; sa maman</span>
+      <span class="name-chip">Eric</span>
+      <span class="name-chip">Adrien</span>
+      <span class="name-chip">Fernando</span>
+    </div>
+  </article>
+
+  
 </body>
 </html>

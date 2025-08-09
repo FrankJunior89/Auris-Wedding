@@ -1,21 +1,150 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Omar & Auris </title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadeaux & Contributions – Omar & Auris</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles additionnels (scopés à cette page) -->
+  <style>
+    :root{
+      --rose:#d63384;
+      --bg-soft:#fff5f7;
+      --bg-grad:linear-gradient(135deg,#fff5f7, #ffe4eb);
+      --text:#333;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(214,51,132,.12);
+      --shadow-soft:0 6px 18px rgba(0,0,0,.08);
+    }
+
+    .hero-gifts{
+      background:#ffffff;
+      padding:4.5rem 1rem 3rem;
+      text-align:center;
+    }
+    .hero-gifts h1{
+      font-family: 'Playfair Display', serif;
+      font-size:clamp(2.2rem,4vw,3rem);
+      color:var(--rose);
+      margin:0 0 .5rem;
+    }
+    .hero-gifts .subtitle{
+      max-width:900px;margin:0 auto;color:#555;font-style:italic;line-height:1.6;
+    }
+
+    /* Bloc texte long, en “cartes” respirantes */
+    .longtext{
+      max-width:1100px;margin:-2rem auto 2rem; padding:0 1rem;
+    }
+    .longtext .card{
+      background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+      padding:1.25rem 1.25rem;
+      margin:1rem 0;
+      line-height:1.8;color:var(--text);
+    }
+    .longtext .chunk-title{
+      display:flex;align-items:center;gap:.6rem;
+      justify-content: center;
+      font-weight:700;color:var(--rose);margin:.5rem 0 .25rem;
+    }
+    .longtext .chunk-title .ico{
+      font-size:1.6rem;line-height:1;
+    }
+
+    /* Grille des contributions */
+    .contrib{
+      padding:1rem 1rem 3rem;background:#fff;
+      max-width:1200px;margin:0 auto;
+    }
+    .contrib h2{
+      text-align:center;font-family:'Playfair Display',serif;color:var(--rose);
+      font-size:clamp(1.8rem,3.6vw,2.4rem);margin-bottom:1.2rem;
+    }
+    .grid{
+      display:grid;gap:1.2rem;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    }
+    .card-contrib{
+      background:#fff;border-radius:var(--radius);box-shadow:var(--shadow-soft);
+      padding:1.2rem;display:flex;flex-direction:column;gap:.65rem;
+    }
+    .card-contrib .bigico{
+      font-size:2rem;
+      background:var(--bg-soft);border-radius:12px;padding:.4rem .6rem;display:inline-block;
+    }
+    .card-contrib h3{margin:.3rem 0;color:var(--rose)}
+    .muted{color:#555}
+    .btn, .btn-outline{
+      display:inline-flex;align-items:center;gap:.5rem;
+      padding:.6rem 1rem;border-radius:10px;border:2px solid var(--rose);
+      text-decoration:none;cursor:pointer;transition:.25s;user-select:none;
+    }
+    .btn{background:var(--rose);color:#fff}
+    .btn:hover{box-shadow:0 10px 20px rgba(214,51,132,.25);transform:translateY(-1px)}
+    .btn-outline{color:var(--rose);background:#fff}
+    .btn-outline:hover{background:var(--rose);color:#fff}
+
+    .small{
+      font-size:.95rem;color:#555
+    }
+
+    /* Blocs “virements” avec copie */
+    .bank{
+      background:var(--bg-soft);border:1px dashed var(--rose);
+      border-radius:12px;padding:.75rem .9rem;font-family:ui-monospace, SFMono-Regular, Menlo, monospace;
+      display:flex;justify-content:space-between;gap:.6rem;align-items:center;flex-wrap:wrap;
+    }
+    .bank span{word-break:break-all}
+    .copy{white-space:nowrap}
+
+    /* Liste cadeaux matériels */
+    .wishlist{
+      background:var(--bg-grad);padding:2rem 1rem;border-radius:var(--radius);box-shadow:var(--shadow-soft);
+    }
+    .wishlist h3{color:var(--rose);margin-top:0}
+    .wishlist-list{
+      display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      margin-top:1rem;
+    }
+    .wishlist-item{
+      background:#fff;border-radius:14px;box-shadow:var(--shadow-soft);
+      padding:1rem;display:flex;gap:.9rem;align-items:flex-start;
+    }
+    .wishlist-item .lg{font-size:1.8rem}
+    .wishlist-item h4{margin:.1rem 0;color:var(--rose)}
+    .wishlist-item p{margin:0;color:#555}
+
+    /* CTA sticky bas de page */
+    .sticky-cta{
+      position:sticky;bottom:0;inset-inline:0;
+      background:rgba(255,255,255,.8);backdrop-filter:blur(8px);
+      border-top:1px solid #f5cadd;
+      display:flex;justify-content:center;padding:.6rem .8rem;z-index:50;
+    }
+    .sticky-cta .inner{
+      width:100%;max-width:1100px;display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;
+    }
+
+    /* Toast copie */
+    .toast{
+      position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+      background:#111;color:#fff;padding:.7rem 1rem;border-radius:10px;opacity:0;pointer-events:none;
+      transition:opacity .25s, transform .25s;box-shadow:0 8px 20px rgba(0,0,0,.25);z-index:9999;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(-4px);}
+  </style>
 </head>
 <body>
 
-
-  <!-- HEADER -->
+<!-- Navigation existante -->
 <header class="navbar">
   <nav>
     <ul class="menu">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="about.html">Notre Histoire</a></li>
-      <li><a href="gifts.html">Cadeaux</a></li>
+      <li><a href="gifts.html" class="active">Cadeaux</a></li>
       <li><a href="padrinos.html">Padrinos</a></li>
       <li><a href="rsvp.html">RSVP</a></li>
       <li class="dropdown">
@@ -31,8 +160,164 @@
   </nav>
 </header>
 
+<!-- HERO -->
+<section class="hero-gifts">
+  <h1>🎁 Cadeaux & contributions</h1>
+  <p class="subtitle">Votre présence est déjà un immense cadeau. Et si vous souhaitez nous gâter davantage, voici les meilleures façons de le faire — simplement, joliment, et sans prise de tête.</p>
+</section>
 
-  <script src="js/countdown.js"></script>
-  <script src="js/script.js"></script>
+<!-- TEXTE LONG (reprend fidèlement ton texte) -->
+<section class="longtext">
+  <article class="card">
+    <p>Vous souhaitez nous offrir un cadeau, mais vous ne savez pas trop quoi ?</p>
+    <p>Nous comprenons parfaitement cette hésitation. Il est vrai que notre situation est peut-être un peu particulière : même si notre mariage aura lieu au Mexique, nous vivons en Colombie-Britannique, au Canada, et chacun d’entre vous est réparti aux quatre coins du monde. Cette jolie distance complique un peu la logistique : les bagages sont limités, et les envois postaux depuis la France, la Suisse, le Mexique ou même le Québec sont souvent fastidieux et onéreux.</p>
+    <p>Par ailleurs, notre foyer est déjà rempli de tout ce dont nous avons besoin pour vivre confortablement et simplement. Nous avons la chance d’avoir un chez-nous qui nous convient, sans manquer de l’essentiel. De plus, d’ici moins de trois ans, il est fort probable que nous déménagions encore plus loin.</p>
+  </article>
+
+  <article class="card">
+    <div class="chunk-title"><span class="ico">🌴</span>Notre rêve de lune de miel</div>
+    <p>Alors, si vous souhaitez vraiment nous faire plaisir, la plus belle manière de le faire est de contribuer à notre rêve : notre lune de miel en Thaïlande. Ce voyage est un projet qui nous tient profondément à cœur depuis plusieurs années, une aventure que nous espérons vivre ensemble pour célébrer ce nouveau chapitre de notre vie.</p>
+    <p>Votre participation, quelle qu’elle soit, sera pour nous un cadeau précieux. Elle nous aidera à créer des souvenirs magiques et à profiter pleinement de ces moments uniques.</p>
+  </article>
+
+  <article class="card">
+    <div class="chunk-title"><span class="ico">💡</span>Comment contribuer, très simplement</div>
+    <p>Pour faciliter cela, nous avons mis en place plusieurs moyens de contribuer :</p>
+    <ul>
+      <li>Une cagnotte en ligne simple et sécurisée, où vous pourrez participer à votre rythme et selon vos envies.</li>
+      <li>Une urne décorative lors de la cérémonie au Mexique, accompagnée d’un QR code pour accéder à la cagnotte, ainsi qu’un terminal de paiement pour ceux qui préfèrent régler par carte.</li>
+      <li>Des possibilités de virement direct : RIB français (Auris) pour nos proches en Europe , RIB mexicain (Omar) pour nos amis au Mexique,Paiement Interac par courriel pour ceux au Canada.
+      </li>
+    </ul>
+  </article>
+
+  <article class="card">
+    <div class="chunk-title"><span class="ico">🧺</span>Et si vous préférez un cadeau matériel…</div>
+    <p>… tout en sachant que ce n’est pas notre priorité, nous avons aussi préparé une liste de mariage, pensée pour y trouver quelques objets utiles et agréables à ajouter à notre maison — comme un robot de cuisine multifonctions, un mixeur polyvalent, ou encore un canapé confortable.</p>
+  </article>
+
+  <article class="card">
+    <div class="chunk-title"><span class="ico">🙏</span>Merci du fond du cœur</div>
+    <p>Nous vous remercions d’avance pour votre générosité, votre présence et l’amour que vous nous portez. Chaque geste, chaque pensée, nous touche profondément.</p>
+    <p>Merci du fond du cœur de faire partie de cette belle aventure à nos côtés.</p>
+  </article>
+</section>
+
+<!-- MÉTHODES DE CONTRIBUTION (cartes + gros icônes) -->
+<section class="contrib">
+  <h2>Choisissez votre manière de contribuer</h2>
+  <div class="grid">
+    <!-- Cagnotte -->
+    <div class="card-contrib">
+      <div class="bigico">💛</div>
+      <h3>Cagnotte en ligne</h3>
+      <p class="muted">Simple, sécurisée, et accessible depuis partout.</p>
+      <!-- Remplace # par ton lien Leetchi/Lydia/PayPal -->
+      <a href="#" class="btn" target="_blank" rel="noopener">Ouvrir la cagnotte</a>
+      <span class="small">Vous pourrez laisser un petit mot 🎉</span>
+    </div>
+
+    <!-- Urne + QR + terminal -->
+    <div class="card-contrib">
+      <div class="bigico">🪙</div>
+      <h3>Urne le jour J</h3>
+      <p class="muted">Urne décorative sur place, QR code vers la cagnotte et terminal CB à disposition.</p>
+      <a href="logistique.html" class="btn-outline">Voir les infos pratiques</a>
+    </div>
+
+    <!-- Virements -->
+    <div class="card-contrib">
+      <div class="bigico">🏦</div>
+      <h3>Virements directs</h3>
+
+      <!-- RIB FR -->
+      <div class="bank" data-copy="FR76 XXXX XXXX XXXX XXXX XXXX XXX (BIC XXXXXXX)">
+        <span><strong>RIB (FR – Auris)</strong>: FR76 XXXX XXXX XXXX XXXX XXXX XXX — BIC XXXXXXX</span>
+        <button class="btn-outline copy">Copier</button>
+      </div>
+
+      <!-- RIB MX -->
+      <div class="bank" data-copy="CLABE 000000000000000000 (Banco XXXXX)">
+        <span><strong>RIB (MX – Omar)</strong>: CLABE 000000000000000000 — Banco XXXXX</span>
+        <button class="btn-outline copy">Copier</button>
+      </div>
+
+      <!-- Interac -->
+      <div class="bank" data-copy="interac@email.tld">
+        <span><strong>Interac (CA)</strong>: interac@email.tld</span>
+        <button class="btn-outline copy">Copier</button>
+      </div>
+      <span class="small">Vous pouvez préciser “Lune de miel 🇹🇭” en référence.</span>
+    </div>
+
+    <!-- Liste de mariage -->
+    <div class="card-contrib">
+      <div class="bigico">🛋️</div>
+      <h3>Liste de mariage</h3>
+      <p class="muted">Une sélection d’objets utiles & beaux pour notre chez-nous.</p>
+      <!-- Lien Google Sheet / Doc / Liste Amazon -->
+      <a href="#" class="btn-outline" target="_blank" rel="noopener">Voir la liste</a>
+    </div>
+  </div>
+</section>
+
+<!-- Idées cadeaux matériels (jolie mise en valeur) -->
+<section class="contrib" style="padding-top:0;">
+  <div class="wishlist">
+    <h3>Quelques idées (si vous aimez offrir du concret) ✨</h3>
+    <div class="wishlist-list">
+      <div class="wishlist-item">
+        <div class="lg">🤖</div>
+        <div>
+          <h4>Robot de cuisine multifonctions</h4>
+          <p>Pour cuisiner à deux sans se compliquer la vie.</p>
+        </div>
+      </div>
+      <div class="wishlist-item">
+        <div class="lg">🥤</div>
+        <div>
+          <h4>Mixeur polyvalent</h4>
+          <p>Smoothies, soupes, sauces — la base du quotidien.</p>
+        </div>
+      </div>
+      <div class="wishlist-item">
+        <div class="lg">🛋️</div>
+        <div>
+          <h4>Canapé confortable</h4>
+          <p>Pour des soirées films, lectures & invités.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA sticky -->
+<div class="sticky-cta">
+  <div class="inner">
+    <a href="#" class="btn" target="_blank" rel="noopener">Participer à la cagnotte</a>
+    <a href="rsvp.html" class="btn-outline">Confirmer ma présence</a>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast" role="status" aria-live="polite">Copié 📋</div>
+
+<script>
+  // Copier les infos bancaires
+  const toast = document.getElementById('toast');
+  function showToast(msg='Copié 📋'){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'), 1400);
+  }
+  document.querySelectorAll('.bank .copy').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      const parent = e.currentTarget.closest('.bank');
+      const toCopy = parent.getAttribute('data-copy') || parent.innerText;
+      navigator.clipboard.writeText(toCopy.trim()).then(()=>showToast());
+    });
+  });
+</script>
+
 </body>
 </html>

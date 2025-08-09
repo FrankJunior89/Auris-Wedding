@@ -8,7 +8,7 @@
 body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
-  background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
+  background: #ffffff;
   color: #333;
   text-align: center;
 }
@@ -164,7 +164,7 @@ body {
 
 .hero h1 {
   font-family: 'Great Vibes', cursive; /* Une belle font romantique */
-  font-size: 4rem;
+  font-size: 6rem;
   color: #333;
   margin-bottom: 0.5rem;
 }
@@ -311,7 +311,7 @@ body {
 /* -------- TOURISME -------- */
 .tourisme-section {
   padding: 4rem 1rem;
-  background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
+  background: #ffffff;
   text-align: center;
 }
 
@@ -456,7 +456,7 @@ body {
 /* -------- RSVP -------- */
 .rsvp-section {
 padding: 4rem 1rem;
-background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
+background: #ffffff;
 text-align: center;
 }
 
@@ -675,7 +675,7 @@ footer {
 .teasers-with-photos {
   position: relative;
   padding: 8rem 2rem;
-  background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
+  background: #ffffff;
   overflow: hidden;
   text-align: center;
 }
@@ -774,7 +774,7 @@ footer {
 
 /* --- PAGE NOTRE HISTOIRE --- */
 .story-full {
-  background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
+  background: #ffffff;
   padding: 4rem 1rem;
   text-align: center;
 }
