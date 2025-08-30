@@ -1,0 +1,381 @@
+/* ======== ACCUEIL – NOUVELLE DISPOSITION EN SECTIONS ======== */
+
+
+/* -------------------- RESET DE BASE -------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background: #ffffff;
+  color: #333;
+  text-align: center;
+}
+
+/* -------------------- NAVBAR -------------------- */
+.navbar {
+  background-color: #fff;
+  padding: 10px 20px;
+  z-index: 10; /* Priorité d'affichage */
+  position: relative;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: left;
+  height: 100%;
+  margin-right: 1rem; /* espace entre logo et menu */
+}
+
+.logo {
+  height: 100%;  /* s'adapte à la hauteur de la navbar */
+  max-height: 60px; /* limite la taille si navbar très grande */
+  width: auto;
+}
+
+.navbar nav {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 8px 12px;
+  display: block;
+}
+
+/* --- Dropdown (caché par défaut) --- */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 160px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.dropdown-menu li a {
+  padding: 10px;
+  z-index: 20; 
+  color: #333;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+}
+
+/* --- Afficher le menu au survol --- */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+
+/* HERO BANNER */
+.hero-banner{
+  position: relative;
+  min-height: 90vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background-image: url('../img/couple/devant-chateau.jpeg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.hero-banner .hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+}
+.hero-banner .hero-inner{
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1rem;
+  color: #fff;
+  max-width: 10000px;
+}
+.hero-banner h1{
+  font-family: 'Arial', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1;
+  margin-bottom: .3rem;
+}
+.hero-banner .hero-sub{
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  opacity: .95;
+  margin-bottom: 1.5rem;
+}
+
+/* Si #countdown existe déjà, on l'embarque visuellement */
+#countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* espace entre les blocs */
+  flex-wrap: wrap; /* pour s'adapter sur petit écran */
+  margin-top: 1rem;
+}
+
+#countdown div {
+  background: white;
+  color: #333;
+  padding: 20px 25px;
+  border-radius: 10px;
+  min-width: 80px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#countdown .number {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#countdown .label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* CTA boutons */
+.btn-primary{
+  display:inline-block;
+  padding:.75rem 1.3rem;
+  background:#d63384; /* ta couleur d’accent */
+  color:#fff;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:700;
+  transition:transform .2s ease, box-shadow .2s ease;
+  box-shadow:0 6px 16px rgba(214,51,132,.25);
+}
+.btn-primary:hover{
+  transform: translateY(-2px);
+  box-shadow:0 10px 24px rgba(214,51,132,.35);
+}
+.btn-ghost{
+  display:inline-block;
+  padding:.75rem 1.3rem;
+  border:2px solid #fff;
+  color:#fff;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:700;
+  transition:background .2s ease, color .2s ease;
+}
+.btn-ghost:hover{ background:#fff; color:#d63384; }
+.btn-outline{
+  display:inline-block;
+  padding:.65rem 1.1rem;
+  border:2px solid #d63384;
+  color:#d63384;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:700;
+  transition:background .2s ease, color .2s ease, transform .2s ease;
+}
+.btn-outline:hover{ background:#d63384; color:#fff; transform: translateY(-1px); }
+
+/* SECTIONS ALTERNÉES (image + texte) */
+.split{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.split.image-right{ grid-template-columns: 1fr 1.2fr; }
+.split .split-media img{
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.12);
+}
+.split .split-content h2{
+  font-family:'Playfair Display', serif;
+  color:#d63384;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom:.5rem;
+}
+.split .split-content p{
+  color:#444;
+  font-size: 1.05rem;
+  line-height:1.7;
+  margin-bottom:1rem;
+}
+.split .split-actions{
+  display:flex; gap:.6rem; flex-wrap:wrap;
+}
+.split.text-only{ grid-template-columns: 1fr; text-align:center; }
+.split.text-only .center{ margin: 0 auto; max-width: 700px; }
+
+/* CALLOUTS (bandes de texte) */
+.callout{
+  text-align:center;
+  padding: 3.5rem 1rem;
+  background: linear-gradient(to bottom right, #fff5f7, #ffe4eb);
+}
+.callout.alt{ background: #ffffff; }
+.callout h3{
+  font-family:'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color:#d63384;
+  margin-bottom:.5rem;
+}
+.callout p{
+  max-width: 760px;
+  margin: 0.25rem auto 1rem;
+  color:#444;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px){
+  .split,
+  .split.image-right,
+  .split.image-left{
+    grid-template-columns: 1fr;
+  }
+  .split .split-media img{ height: 340px; }
+}
+@media (max-width: 640px){
+  .hero-ctas{ flex-direction: column; gap:.6rem; }
+  .split .split-media img{ height: 260px; }
+}
+
+
+
+
+
+/* ===== Grille sans background ===== */
+.teasers{
+  padding: 3rem 1rem;
+}
+.teasers-grid{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 colonnes desktop */
+}
+
+/* Cartes de base */
+.teaser{
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+/* Cartes texte */
+.teaser.card{
+  padding: 1.2rem 1.1rem;
+}
+.teaser.card h3{
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  color: #d63384; /* ta couleur d’accent */
+  margin-bottom: .4rem;
+}
+.teaser.card p{
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: .8rem;
+}
+.teaser.card .actions{
+  display: flex; gap: .6rem; flex-wrap: wrap;
+}
+
+/* Cartes photo */
+.teaser.photo{
+  display: grid;
+  grid-template-rows: auto min-content;
+}
+.teaser.photo img{
+  display: block;
+  width: 100%;
+  height: 260px;          /* tu peux ajuster */
+  object-fit: cover;
+}
+.teaser.photo figcaption{
+  padding: .7rem .9rem;
+  font-size: .95rem;
+  color: #333;
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+/* Variants de disposition */
+.span-2{ grid-column: span 2; }   /* carte large sur 2 colonnes */
+.full{ grid-column: 1 / -1; }     /* pleine largeur */
+
+/* Bouton fantôme réutilisable */
+.btn-ghost{
+  display:inline-block;
+  padding:.6rem 1rem;
+  border:2px solid #d63384;
+  color:#d63384;
+  text-decoration:none;
+  font-weight:700;
+  border-radius:30px;
+  transition: background .18s ease, color .18s ease, transform .18s ease;
+  white-space: nowrap;
+}
+.btn-ghost:hover{
+  background:#d63384;
+  color:#fff;
+  transform: translateY(-1px);
+}
+
+/* Hover subtil */
+.teaser:hover{
+  box-shadow: 0 12px 28px rgba(0,0,0,.10);
+  transform: translateY(-2px);
+  transition: .18s ease;
+}
+
+/* Responsive */
+@media (max-width: 1024px){
+  .teasers-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 colonnes tablette */
+  }
+  .span-2, .full{ grid-column: 1 / -1; } /* étendent sur toute la ligne */
+}
+@media (max-width: 640px){
+  .teasers-grid{
+    grid-template-columns: 1fr; /* 1 colonne mobile */
+  }
+}
