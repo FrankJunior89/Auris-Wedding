@@ -1,89 +1,491 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Omar & Auris </title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RSVP – Formulaire multi‑étapes</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root{--accent:#d63384;--bg:#faf7fa;--fg:#2b2b2b;--muted:#666;}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+    .container{max-width:900px;margin:40px auto;padding:0 16px}
+    .card{background:#fff;border:1px solid rgba(0,0,0,.06);box-shadow:0 8px 24px rgba(0,0,0,.06);border-radius:18px;padding:28px}
+    h1{font-family:"Playfair Display",serif;font-size:clamp(1.5rem,2.5vw,2.2rem);margin:0 0 .25rem;color:var(--accent)}
+    p.lead{margin:.25rem 0 1.2rem;color:#444}
+
+    /* Progress */
+    .progress{display:flex;align-items:center;gap:10px;margin:10px 0 24px}
+    .progress-bar{flex:1;height:8px;background:#eee;border-radius:999px;overflow:hidden}
+    .progress-bar>span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s ease}
+    .progress-steps{display:flex;gap:6px;font-size:.85rem;color:var(--muted)}
+
+    form{display:block}
+    fieldset{border:0;padding:0;margin:0;display:none}
+    fieldset.active{display:block}
+
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(12,1fr)}
+    .col-12{grid-column:span 12}
+    .col-6{grid-column:span 6}
+    .col-4{grid-column:span 4}
+    .col-8{grid-column:span 8}
+    @media (max-width:720px){.col-6,.col-4,.col-8{grid-column:span 12}}
+
+    label{font-weight:600;margin-bottom:6px;display:block}
+    .hint{font-size:.9rem;color:var(--muted);margin:-2px 0 8px}
+    input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{width:100%;padding:.8rem 1rem;border:1px solid #ccc;border-radius:10px;font-size:1rem;transition:border-color .2s,box-shadow .2s}
+    textarea{min-height:110px;resize:vertical}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent)}
+
+    .row{margin:10px 0}
+    .inline{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{display:inline-flex;align-items:center;gap:8px;border:1.5px solid #ddd;border-radius:999px;padding:.45rem .8rem;cursor:pointer;user-select:none}
+    .chip input{appearance:none;width:16px;height:16px;border:2px solid var(--accent);border-radius:50%;display:inline-block;position:relative}
+    .chip input:checked{background:var(--accent)}
+
+    .actions{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+    .btn{appearance:none;border:0;border-radius:30px;padding:.85rem 1.2rem;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s;background:#eee}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 14px rgba(214,51,132,.3)}
+    .btn-primary:hover{box-shadow:0 10px 20px rgba(214,51,132,.4)}
+
+    .hidden{display:none !important}
+    .small{font-size:.92rem;color:var(--muted)}
+    .section-title{font-size:1.2rem;margin:6px 0 12px;color:#222}
+    .divider{height:1px;background:#eee;margin:12px 0}
+    .error{color:#b00020;font-size:.9rem;margin-top:6px}
+  </style>
 </head>
 <body>
 
-
   <!-- HEADER -->
-<header class="navbar">
-  <nav>
-    <a href="index.html" class="logo-link">
-      <img src="img/backgrounds/logo-site.jpeg"" alt="Logo O&A" class="logo">
-    </a>
-    <ul class="menu">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="about.html">Notre Histoire</a></li>
-      <li><a href="gifts.html">Cadeaux</a></li>
-      <li><a href="padrinos.html">Padrinos</a></li>
-      <li><a href="rsvp.html">RSVP</a></li>
-      <li class="dropdown">
-        <a href="#">Plus ▾</a>
-        <ul class="dropdown-menu">
-          <li><a href="logistique.html">Logistique</a></li>
-          <li><a href="tourisme.html">Tourisme</a></li>
-          <li><a href="galerie.html">Galerie</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-</header>
-
-<!-- SECTION RSVP -->
-<section class="rsvp-section">
-<h1>💌 Confirmez votre présence</h1>
-<p class="intro">Nous avons hâte de célébrer avec vous ! Merci de remplir le formulaire ci-dessous pour nous aider à mieux nous organiser 💕</p>
-
-<form class="rsvp-form" action="https://formspree.io/f/xrblaoed" method="post">
-<div class="form-group">
-<label for="name">Nom complet</label>
-<input type="text" id="name" name="name" placeholder="Votre nom" required>
-</div>
-
-<div class="form-group">
-<label for="email">Adresse e-mail</label>
-<input type="email" id="email" name="email" placeholder="votremail@example.com" required>
-</div>
-
-<div class="form-group">
-<label for="guests">Nombre de personnes</label>
-<select id="guests" name="guests" required>
-<option value="" disabled selected>Choisir...</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4+">4 ou plus</option>
-</select>
-</div>
-
-<div class="form-group">
-<label for="attendance">Présence</label>
-<select id="attendance" name="attendance" required>
-<option value="" disabled selected>Choisir...</option>
-<option value="yes">Oui, je serai là 🎉</option>
-<option value="no">Désolé, je ne pourrai pas venir 💔</option>
-</select>
-</div>
-
-<div class="form-group">
-<label for="message">Message (optionnel)</label>
-<textarea id="message" name="message" rows="4" placeholder="Un petit mot pour nous 💌"></textarea>
-</div>
-
-<button type="submit" class="btn-submit">Envoyer ma réponse</button>
-</form>
-
-
-</section>
+  <header class="navbar">
+    <nav>
+      <a href="index.html" class="logo-link">
+        <!-- remplace par ton logo si besoin -->
+        <img src="img/backgrounds/logo-site.jpeg" alt="Logo O&A" class="logo" />
+      </a>
+      <ul class="menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">Notre Histoire</a></li>
+        <li><a href="gifts.html">Cadeaux</a></li>
+        <li><a href="padrinos.html">Padrinos</a></li>
+        <li><a href="rsvp.html">RSVP</a></li>
+        <li class="dropdown">
+          <a href="#">Plus ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="logistique.html">Logistique</a></li>
+            <li><a href="tourisme.html">Tourisme</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
 
 
-  <script src="js/countdown.js"></script>
-  <script src="js/script.js"></script>
+  <div class="container">
+    <div class="card">
+      <h1>💌 Aide-nous à faire de ce mariage un moment incroyable</h1>
+      <p class="lead">Prends quelques minutes pour répondre à ces questions. Elles nous aideront à organiser un mariage qui te ressemble ✨</p>
+
+      <div class="progress" aria-hidden="true">
+        <div class="progress-bar" aria-label="Progression"><span id="progress-fill" style="width:0%"></span></div>
+        <div class="progress-steps"><span id="progress-text">Étape 1 / 6</span></div>
+      </div>
+
+      <form id="rsvpWizard" action="https://formspree.io/f/xrblaoed" method="POST" novalidate>
+        <!-- Étape 1 : À propos de toi -->
+        <fieldset data-step="1" class="active">
+          <div class="section-title">1. Dis‑nous en plus sur toi 💌</div>
+          <div class="grid">
+            <div class="col-6">
+              <label for="name">Prénom & nom *</label>
+              <input type="text" id="name" name="name" placeholder="Votre nom complet" required />
+            </div>
+            <div class="col-6">
+              <label for="relation">Relation avec les marié·e·s *</label>
+              <select id="relation" name="relation" required>
+                <option value="" disabled selected>Choisir…</option>
+                <option>Frère / Sœur</option>
+                <option>Parent</option>
+                <option>Oncle / Tante</option>
+                <option>Ami(e)</option>
+                <option>Ami(e) de la famille</option>
+                <option>+1 d’un invité</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="email">Adresse e‑mail *</label>
+              <input type="email" id="email" name="email" placeholder="vous@example.com" required />
+            </div>
+            <div class="col-6">
+              <label for="phone">Téléphone (avec indicatif) *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+33 6 12 34 56 78" required />
+            </div>
+            <div class="col-12">
+              <label>Moyen(x) de communication préféré(s) *</label>
+              <div class="inline" id="comms">
+                <label class="chip"><input type="checkbox" name="comms[]" value="Email" /> Email</label>
+                <label class="chip"><input type="checkbox" name="comms[]" value="Téléphone" /> Téléphone</label>
+                <label class="chip"><input type="checkbox" name="comms[]" value="WhatsApp" /> WhatsApp</label>
+                <label class="chip"><input type="checkbox" name="comms[]" value="Facebook" /> Facebook</label>
+                <label class="chip"><input type="checkbox" name="comms[]" value="Instagram" /> Instagram</label>
+                <label class="chip"><input type="checkbox" name="comms[]" value="Autre" /> Autre</label>
+              </div>
+              <div class="hint">Coche au moins une option.</div>
+            </div>
+            <div class="col-6">
+              <label for="ageOnDate">Âge au 25 octobre 2025 *</label>
+              <input type="number" min="0" id="ageOnDate" name="age_on_date" placeholder="Ex. 28" required />
+            </div>
+            <div class="col-6">
+              <label for="ethnicity">Origine(s) (facultatif)</label>
+              <select id="ethnicity" name="ethnicity">
+                <option value="" selected>—</option>
+                <option>Latino</option>
+                <option>Européen</option>
+                <option>Africain</option>
+                <option>Asiatique</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="plusOn">Viens‑tu accompagné·e ?</label>
+              <select id="plusOn" name="plus_on">
+                <option value="no" selected>Non</option>
+                <option value="yes">Oui</option>
+              </select>
+            </div>
+            <div class="col-12 hidden" id="companionsBlock">
+              <div class="grid">
+                <div class="col-4">
+                  <label for="companions">Combien de personnes ?</label>
+                  <input type="number" min="1" max="10" id="companions" name="companions_count" placeholder="Ex. 2" />
+                </div>
+                <div class="col-8">
+                  <label for="companionsAges">Âge(s) le jour J (séparés par des virgules)</label>
+                  <input type="text" id="companionsAges" name="companions_ages" placeholder="Ex. 5, 32" />
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="notes">Remarques / besoins spécifiques</label>
+              <textarea id="notes" name="notes" placeholder="Allergies, accessibilité, etc."></textarea>
+            </div>
+            <div class="col-12">
+              <label for="cultural">Préférences/Restrictions culturelles ou religieuses</label>
+              <textarea id="cultural" name="cultural_prefs" placeholder="Ce que nous devons respecter"></textarea>
+            </div>
+          </div>
+          <div class="actions"><button type="button" class="btn" data-prev disabled>Précédent</button><button type="button" class="btn btn-primary" data-next>Suivant</button></div>
+        </fieldset>
+
+        <!-- Étape 2 : Logistique -->
+        <fieldset data-step="2">
+          <div class="section-title">2. Parlons logistique 🧳</div>
+          <div class="grid">
+            <div class="col-12">
+              <label for="livesInCdmx">Habites‑tu à Mexico City ? *</label>
+              <select id="livesInCdmx" name="lives_in_cdmx" required>
+                <option value="" disabled selected>Choisir…</option>
+                <option value="yes">Oui</option>
+                <option value="no">Non</option>
+              </select>
+            </div>
+            <div id="travelBlock" class="col-12 hidden">
+              <div class="divider"></div>
+              <div class="grid">
+                <div class="col-12">
+                  <label for="ticketBooked">Billet réservé ?</label>
+                  <select id="ticketBooked" name="ticket_booked">
+                    <option value="">—</option>
+                    <option>Oui</option>
+                    <option>Pas encore</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label for="arrival">Arrivée (date & lieu)</label>
+                  <input type="text" id="arrival" name="arrival" placeholder="Ex. 23/10 – MEX" />
+                </div>
+                <div class="col-6">
+                  <label for="departure">Départ (date & lieu)</label>
+                  <input type="text" id="departure" name="departure" placeholder="Ex. 28/10 – MEX" />
+                </div>
+                <div class="col-6">
+                  <label for="lodging">Logement réservé ?</label>
+                  <select id="lodging" name="lodging">
+                    <option value="">—</option>
+                    <option>Oui</option>
+                    <option>Non</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label for="needLodgingHelp">Besoin de conseils logement ?</label>
+                  <select id="needLodgingHelp" name="need_lodging_help">
+                    <option value="">—</option>
+                    <option>Oui</option>
+                    <option>Non</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="lodgingPref">Préférences d’hébergement</label>
+                  <select id="lodgingPref" name="lodging_pref">
+                    <option value="">—</option>
+                    <option>Hôtel</option>
+                    <option>Auberge</option>
+                    <option>Maison type Airbnb</option>
+                    <option>Autre</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="actions"><button type="button" class="btn" data-prev>Précédent</button><button type="button" class="btn btn-primary" data-next>Suivant</button></div>
+        </fieldset>
+
+        <!-- Étape 3 : Restauration & table -->
+        <fieldset data-step="3">
+          <div class="section-title">3. Restauration & plan de table 🍽️</div>
+          <div class="grid">
+            <div class="col-12">
+              <label for="tableWith">Personnes souhaitées à ta table (noms & relation)</label>
+              <textarea id="tableWith" name="table_with"></textarea>
+            </div>
+            <div class="col-12">
+              <label for="tableAvoid">Personnes à éviter (facultatif)</label>
+              <textarea id="tableAvoid" name="table_avoid"></textarea>
+            </div>
+            <div class="col-12">
+              <label for="diet">Régime alimentaire particulier</label>
+              <input type="text" id="diet" name="diet" placeholder="Végétarien, végan, halal, kasher, sans gluten, allergies…" />
+            </div>
+            <div class="col-6">
+              <label for="alcohol">Bois‑tu de l’alcool ?</label>
+              <select id="alcohol" name="alcohol">
+                <option value="">—</option>
+                <option>Non, pas du tout</option>
+                <option>Un peu</option>
+                <option>Oui</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="smoker">Fumes‑tu ?</label>
+              <select id="smoker" name="smoker">
+                <option value="">—</option>
+                <option>Oui</option>
+                <option>Non</option>
+              </select>
+            </div>
+            <div class="col-12" id="smellBlock" class="hidden">
+              <label for="smell">Si non : l’odeur de tabac te dérange‑t‑elle ?</label>
+              <select id="smell" name="smell">
+                <option value="">—</option>
+                <option>Oui</option>
+                <option>Non</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="languages">Langues parlées</label>
+              <input type="text" id="languages" name="languages" placeholder="Français, espagnol, anglais…" />
+            </div>
+          </div>
+          <div class="actions"><button type="button" class="btn" data-prev>Précédent</button><button type="button" class="btn btn-primary" data-next>Suivant</button></div>
+        </fieldset>
+
+        <!-- Étape 4 : Networking & passions -->
+        <fieldset data-step="4">
+          <div class="section-title">4. Networking & passions 🤝</div>
+          <div class="grid">
+            <div class="col-12">
+              <label for="openNetworking">Partant·e pour rencontrer de nouvelles personnes ?</label>
+              <select id="openNetworking" name="open_networking">
+                <option value="">—</option>
+                <option>Oui</option>
+                <option>Pourquoi pas</option>
+                <option>Plutôt non</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="education">Niveau d’études</label>
+              <select id="education" name="education">
+                <option value="">—</option>
+                <option>Collège / Lycée</option>
+                <option>Licence</option>
+                <option>Master</option>
+                <option>Doctorat</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="job">Profession / secteur</label>
+              <input type="text" id="job" name="job" />
+            </div>
+            <div class="col-12">
+              <label for="interests">Centres d’intérêt (perso/pro)</label>
+              <textarea id="interests" name="interests" placeholder="Idées brise‑glace 😄"></textarea>
+            </div>
+          </div>
+          <div class="actions"><button type="button" class="btn" data-prev>Précédent</button><button type="button" class="btn btn-primary" data-next>Suivant</button></div>
+        </fieldset>
+
+        <!-- Étape 5 : Tourisme & activités -->
+        <fieldset data-step="5">
+          <div class="section-title">5. Tourisme & activités 🌎</div>
+          <div class="grid">
+            <div class="col-12">
+              <label for="tourism">Profiteras‑tu du voyage pour découvrir le Mexique ?</label>
+              <select id="tourism" name="tourism">
+                <option value="">—</option>
+                <option>Oui</option>
+                <option>Non</option>
+                <option>Peut‑être</option>
+              </select>
+            </div>
+            <div id="tourismBlock" class="col-12 hidden">
+              <div class="divider"></div>
+              <div class="grid">
+                <div class="col-12">
+                  <label for="cities">Villes prévues (hors CDMX)</label>
+                  <input type="text" id="cities" name="cities" placeholder="Ex. Oaxaca, Mérida…" />
+                </div>
+                <div class="col-12">
+                  <label for="groupActivities">Activités : en groupe ou en solo ?</label>
+                  <select id="groupActivities" name="group_activities">
+                    <option value="">—</option>
+                    <option>En groupe</option>
+                    <option>En solo</option>
+                    <option>Les deux</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="interestsTourism">Intérêts particuliers</label>
+                  <input type="text" id="interestsTourism" name="interests_tourism" placeholder="Gastronomie, art, architecture, nature…" />
+                </div>
+                <div class="col-12">
+                  <label for="activities">Activités souhaitées</label>
+                  <input type="text" id="activities" name="activities" placeholder="Cenotes, pyramides, musées…" />
+                </div>
+                <div class="col-12">
+                  <label for="sites">Sites historiques/culturels/naturels</label>
+                  <input type="text" id="sites" name="sites" />
+                </div>
+                <div class="col-12">
+                  <label for="days">Nombre de jours consacrés aux visites</label>
+                  <input type="number" min="0" id="days" name="tour_days" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="actions"><button type="button" class="btn" data-prev>Précédent</button><button type="button" class="btn btn-primary" data-next>Suivant</button></div>
+        </fieldset>
+
+        <!-- Étape 6 : Derniers mots -->
+        <fieldset data-step="6">
+          <div class="section-title">6. Pour finir ✨</div>
+          <div class="grid">
+            <div class="col-12">
+              <label for="finalMsg">Commentaires, suggestions ou demandes spéciales</label>
+              <textarea id="finalMsg" name="final_msg" placeholder="On vous lit avec le cœur 💖"></textarea>
+            </div>
+          </div>
+          <div class="actions"><button type="button" class="btn" data-prev>Précédent</button><button type="submit" class="btn btn-primary">Envoyer ma réponse</button></div>
+          <div class="small" style="margin-top:8px">L’envoi se fait via Formspree. Aucune donnée sensible n’est collectée.</div>
+        </fieldset>
+
+        <!-- anti‑bot honeypot -->
+        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('rsvpWizard');
+      const fieldsets = Array.from(form.querySelectorAll('fieldset'));
+      const nextBtns = form.querySelectorAll('[data-next]');
+      const prevBtns = form.querySelectorAll('[data-prev]');
+      const progressFill = document.getElementById('progress-fill');
+      const progressText = document.getElementById('progress-text');
+      let step = 0; // index 0..5
+
+      function updateUI(){
+        fieldsets.forEach((fs,i)=>fs.classList.toggle('active', i===step));
+        const pct = Math.round(((step+1)/fieldsets.length)*100);
+        progressFill.style.width = pct+'%';
+        progressText.textContent = `Étape ${step+1} / ${fieldsets.length}`;
+        // disable prev on first
+        const prev = fieldsets[step].querySelector('[data-prev]');
+        if(prev) prev.disabled = (step===0);
+      }
+
+      function validateStep(){
+        const fs = fieldsets[step];
+        // simple validation of required inputs in visible step
+        const required = fs.querySelectorAll('[required]');
+        for(const el of required){
+          if(el.closest('.hidden')) continue; // skip hidden groups
+          if(!el.value){
+            el.focus();
+            el.scrollIntoView({behavior:'smooth', block:'center'});
+            return false;
+          }
+        }
+        // at least one comms checked (step 0)
+        if(step===0){
+          const anyChecked = Array.from(document.querySelectorAll('#comms input[type=checkbox]')).some(c=>c.checked);
+          if(!anyChecked){
+            alert('Merci de choisir au moins un moyen de communication.');
+            return false;
+          }
+        }
+        return true;
+      }
+
+      nextBtns.forEach(btn=>btn.addEventListener('click',()=>{
+        if(!validateStep()) return;
+        if(step < fieldsets.length-1){ step++; updateUI(); }
+      }));
+      prevBtns.forEach(btn=>btn.addEventListener('click',()=>{ if(step>0){ step--; updateUI(); } }));
+
+      // Conditional blocks
+      const plusOn = document.getElementById('plusOn');
+      const companionsBlock = document.getElementById('companionsBlock');
+      plusOn.addEventListener('change',()=>{
+        companionsBlock.classList.toggle('hidden', plusOn.value!=='yes');
+      });
+
+      const lives = document.getElementById('livesInCdmx');
+      const travelBlock = document.getElementById('travelBlock');
+      lives.addEventListener('change',()=>{
+        travelBlock.classList.toggle('hidden', lives.value!=='no');
+      });
+
+      const smoker = document.getElementById('smoker');
+      const smellBlock = document.getElementById('smellBlock');
+      smoker.addEventListener('change',()=>{
+        smellBlock.classList.toggle('hidden', smoker.value!=="Non");
+      });
+
+      const tourism = document.getElementById('tourism');
+      const tourismBlock = document.getElementById('tourismBlock');
+      tourism.addEventListener('change',()=>{
+        tourismBlock.classList.toggle('hidden', tourism.value!=="Oui");
+      });
+
+      // Initialize UI (for prefilled values)
+      ['change'].forEach(evt=>{
+        plusOn.dispatchEvent(new Event(evt));
+        lives.dispatchEvent(new Event(evt));
+        smoker.dispatchEvent(new Event(evt));
+        tourism.dispatchEvent(new Event(evt));
+      });
+
+      updateUI();
+    })();
+  </script>
 </body>
 </html>
