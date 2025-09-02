@@ -1,41 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Omar & Auris </title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ – Omar & Auris</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/faq.css" />
 </head>
 <body>
 
+  <header class="navbar">
+    <nav>
+      <a href="index.html" class="logo-link">
+        <img src="img/backgrounds/logo-site-transparent.jpeg" alt="Logo O&A" class="logo" />
+      </a>
+      <ul class="menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">Notre Histoire</a></li>
+        <li><a href="gifts.html">Cadeaux</a></li>
+        <li><a href="padrinos.html">Padrinos</a></li>
+        <li><a href="rsvp.html">RSVP</a></li>
+        <li class="dropdown">
+          <a href="#">Plus ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="logistique.html">Logistique</a></li>
+            <li><a href="tourisme.html">Tourisme</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- HEADER -->
-<header class="navbar">
-  <nav>
-    <a href="index.html" class="logo-link">
-      <img src="img/backgrounds/logo-site-transparent.jpeg" alt="Logo O&A" class="logo">
-    </a>
-    <ul class="menu">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="about.html">Notre Histoire</a></li>
-      <li><a href="gifts.html">Cadeaux</a></li>
-      <li><a href="padrinos.html">Padrinos</a></li>
-      <li><a href="rsvp.html">RSVP</a></li>
-      <li class="dropdown">
-        <a href="#">Plus ▾</a>
-        <ul class="dropdown-menu">
-          <li><a href="logistique.html">Logistique</a></li>
-          <li><a href="tourisme.html">Tourisme</a></li>
-          <li><a href="galerie.html">Galerie</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-</header>
+  <section class="faq-section">
+    <h1>❓ Foire Aux Questions</h1>
+    <p class="intro">Toutes vos interrogations trouvent ici leurs réponses 💕</p>
 
+    <div class="faq-container">
+      <!-- Question 1 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          👗 Quelle tenue dois-je porter (et quelles couleurs éviter) ?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+                    <p>
+            Vous pouvez porter toutes les couleurs ✨, à l’exception des teintes 
+            <b>beige</b>, <b>blanc</b>, <b>violet</b>, <b>rose</b> et <b>bleu</b>  
+            qui sont réservées aux mariés ou à l’ambiance décorative.  
+            L’important est que vous soyez élégants, festifs et surtout confortables 💖.
+          </p>
+        </div>
+      </div>
 
-  <script src="js/countdown.js"></script>
-  <script src="js/script.js"></script>
+      <!-- Tu pourras dupliquer ce bloc pour d’autres questions -->
+    </div>
+  </section>
+
+  <script>
+    // Accordéon FAQ
+    document.querySelectorAll(".faq-question").forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+        const answer = btn.nextElementSibling;
+        if (btn.classList.contains("active")) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          btn.querySelector(".arrow").textContent = "▲";
+        } else {
+          answer.style.maxHeight = null;
+          btn.querySelector(".arrow").textContent = "▼";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
