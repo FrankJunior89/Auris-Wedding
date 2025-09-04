@@ -1,0 +1,14 @@
+body {
+  background: url("../img/couple/a-la-montagne.jpeg") no-repeat center center / cover;
+  position: relative;
+}
+
+/* Overlay léger (voile blanc translucide) */
+body::before {
+  content: "";
+  position: fixed; /* couvre tout l’écran */
+  inset: 0;
+  background: rgba(255,255,255,0.6); /* voile blanc semi-transparent */
+  backdrop-filter: blur(2px);        /* optionnel : léger flou artistique */
+  z-index: -1; /* derrière tout le contenu */
+}
