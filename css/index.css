@@ -122,9 +122,17 @@ body {
   color: #fff;
   max-width: 10000px;
 }
+
+.hero-banner .hero-inner h1{
+  font-family: 'Arial', sans-serif;
+  font-size: clamp(4rem, 16vw, 7rem);
+  line-height: 1;
+  margin-bottom: .3rem;
+}
+
 .hero-banner h1{
   font-family: 'Arial', sans-serif;
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(4rem, 16vw, 6rem);
   line-height: 1;
   margin-bottom: .3rem;
 }
