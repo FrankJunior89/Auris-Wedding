@@ -77,7 +77,9 @@
             <li><a href="logistique.html">Logistique</a></li>
             <li><a href="tourisme.html">Tourisme</a></li>
             <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="program.html">Programme</a></li>
             <li><a href="faq.html">FAQ</a></li>
+            
           </ul>
         </li>
       </ul>
@@ -101,6 +103,16 @@
         <fieldset data-step="1" class="active">
           <div class="section-title">1. Dis‑nous en plus sur toi 💌</div>
           <div class="grid">
+
+                <div class="col-12">
+                <label for="attendance">Confirmez-vous votre présence ? *</label>
+                <select id="attendance" name="attendance" required>
+                  <option value="" disabled selected>Choisir…</option>
+                  <option value="yes">Oui</option>
+                  <option value="no">Non</option>
+                </select>
+              </div>
+
             <div class="col-6">
               <label for="name">Prénom & nom *</label>
               <input type="text" id="name" name="name" placeholder="Votre nom complet" required />

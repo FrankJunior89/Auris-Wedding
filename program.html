@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omar & Auris – Programme</title>
+  
+  <!-- Fonts & global styles (même DA que le site) -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/index.css" />
+  
+  <style>
+    /* ---- Affinages locaux de style (respecte la DA existante) ---- */
+    :root { --accent:#d63384; }
+
+    .page-hero {
+      min-height: 48vh;
+      display: grid; place-items: center;
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+      position: relative;
+      background: linear-gradient(135deg, #fff5f7 0%, #ffe4eb 100%);
+      overflow: hidden;
+    }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--accent); margin-bottom: .3rem; }
+    .page-hero p { color:#444; max-width: 800px; margin: 0 auto; }
+
+    /* ruban date */
+    .date-ribbon { 
+      display:inline-flex; align-items:center; gap:.6rem; 
+      padding:.4rem .8rem; border-radius:999px; 
+      background:#fff; border:1px solid rgba(0,0,0,.06); 
+      box-shadow:0 6px 16px rgba(0,0,0,.06);
+      font-weight:600; color:#333; margin-top:1rem; 
+    }
+
+    /* timeline */
+    .timeline2 { position: relative; max-width: 1100px; margin: -2rem auto 3rem; padding: 0 1rem; }
+    .timeline2::before { content:""; position:absolute; left:50%; top:0; bottom:0; width:4px; background: var(--accent); opacity:.2; transform:translateX(-50%); }
+    .t-item { position: relative; display:grid; grid-template-columns: 1fr; gap:.8rem; max-width: 520px; background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:16px; box-shadow:0 10px 24px rgba(0,0,0,.06); padding:1rem 1.1rem; }
+    .t-left  { margin: 1.2rem auto 1.2rem 0; }
+    .t-right { margin: 1.2rem 0 1.2rem auto; }
+    .t-item::after { content:""; position:absolute; top:18px; width:16px; height:16px; background:#fff; border:4px solid var(--accent); border-radius:50%; }
+    .t-left::after  { right:-40px; }
+    .t-right::after { left:-40px; }
+
+    .t-head { display:flex; align-items:center; gap:.6rem; }
+    .t-emoji { font-size: 1.3rem; }
+    .t-title { font-weight:800; color: var(--accent); letter-spacing:.3px; }
+    .t-sub   { font-size:.95rem; color:#555; }
+    .t-meta  { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.2rem; }
+    .badge { display:inline-flex; align-items:center; gap:.35rem; padding:.35rem .6rem; border:1px solid #eee; border-radius:999px; font-size:.85rem; color:#444; background:#fff; }
+
+    .address { background:#fff7fa; border:1px dashed #ffc2da; border-radius:12px; padding:.8rem; font-size:.95rem; color:#333; }
+    .actions { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:.6rem; }
+    .btn-small { appearance:none; border:0; border-radius:10px; padding:.55rem .8rem; background: var(--accent); color:#fff; font-weight:700; cursor:pointer; box-shadow:0 6px 14px rgba(214,51,132,.25); }
+    .btn-small.ghost { background:#ffe4eb; color:#b0256c; box-shadow:none; }
+    .note { font-size:.9rem; color:#555; font-style:italic; }
+
+    /* "Après fêtes" cartes */
+    .after { max-width: 1100px; margin: 2rem auto 3rem; padding: 0 1rem; }
+    .after-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1rem; }
+    .card { background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:16px; box-shadow: 0 10px 24px rgba(0,0,0,.06); padding:1rem 1.1rem; text-align:left; }
+    .card h3 { color: var(--accent); margin-bottom:.3rem; }
+
+    /* CTA flottant */
+    .floating-cta { position: fixed; right: 16px; bottom: 16px; z-index: 50; }
+    .floating-cta a { display:inline-flex; align-items:center; gap:.5rem; background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:999px; padding:.7rem 1rem; box-shadow:0 10px 24px rgba(0,0,0,.12); text-decoration:none; color:#333; font-weight:700; }
+    .floating-cta a:hover { transform: translateY(-2px); }
+
+    @media (max-width: 820px) {
+      .timeline2::before { left: 18px; transform:none; }
+      .t-item { margin: 1rem 0 1rem 48px; }
+      .t-left::after,.t-right::after { left:-40px; right:auto; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER (identique) -->
+  <header class="navbar">
+    <nav>
+      <a href="index.html" class="logo-link">
+        <!-- remplace par ton logo si besoin -->
+        <img src="img/backgrounds/logo-site-transparent.jpeg" alt="Logo O&A" class="logo" />
+      </a>
+      <ul class="menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">Notre Histoire</a></li>
+        <li><a href="gifts.html">Cadeaux</a></li>
+        <li><a href="padrinos.html">Padrinos</a></li>
+        <li><a href="rsvp.html">RSVP</a></li>
+        <li class="dropdown">
+          <a href="#">Plus ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="logistique.html">Logistique</a></li>
+            <li><a href="tourisme.html">Tourisme</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="program.html">Programme</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div>
+      <h1>📋 Programme</h1>
+      <p>Les temps forts de notre grand week‑end au Mexique. Horaires, adresses et petits plus pour vous guider en douceur ✨</p>
+      <div class="date-ribbon">🗓️ 23–25 octobre 2025 • Mexico</div>
+    </div>
+  </section>
+
+  <!-- TIMELINE PRINCIPALE -->
+  <section class="timeline2" aria-label="Programme">
+    <!-- 1. Mariage traditionnel / la dote -->
+    <article class="t-item t-left" id="traditionnel">
+      <header class="t-head"><span class="t-emoji">1️⃣ 📅</span><div class="t-title">Mariage traditionnel / coutumier (la dote)</div></header>
+      <div class="t-sub">Jeudi 23 octobre • Lieu à confirmer</div>
+      <div class="t-meta">
+        <span class="badge">👗 Tenue: élégante & respectueuse</span>
+        <span class="badge">🎶 Rituels camerounais</span>
+      </div>
+      <p class="note">La dotation et les rituels ancestraux camerounais auront lieu. Le lieu exact vous sera communiqué sous peu.</p>
+    </article>
+
+    <!-- 2. Mariage religieux -->
+    <article class="t-item t-right" id="religieux">
+      <header class="t-head"><span class="t-emoji">2️⃣ 🕊️</span><div class="t-title">Mariage religieux</div></header>
+      <div class="t-sub">Samedi 25 octobre • 13h (RDV 12h–12h30)</div>
+      <div class="address" id="addr-eglise">
+        Parroquia de la Divina Providencia<br>
+        Cienfuegos 1012, Lindavista, Gustavo A. Madero, 07369 Ciudad de México, CDMX, México
+      </div>
+      <div class="actions">
+        <a class="btn-small" href="https://maps.app.goo.gl/MSp6CW4t11XFRjg78?g_st=ic" target="_blank" rel="noopener">🗺️ Ouvrir dans Maps</a>
+        <button class="btn-small ghost" data-copy="#addr-eglise">📋 Copier l’adresse</button>
+      </div>
+    </article>
+
+    <!-- 3. Réception / Salle des fêtes -->
+    <article class="t-item t-left" id="reception">
+      <header class="t-head"><span class="t-emoji">3️⃣ 🎉</span><div class="t-title">Réception / Salle des fêtes</div></header>
+      <div class="t-sub">Samedi 25 octobre • RDV 17h</div>
+      <div class="address" id="addr-salle">
+        Salon CEREZO<br>
+        Valle del Cerezo 92, Valle de Aragon 1ra Secc, 57100 Cdad. Nezahualcóyotl, Méx., México
+      </div>
+      <div class="actions">
+        <a class="btn-small" href="https://maps.app.goo.gl/5U16n1o8M4Cv11te7?g_st=ic" target="_blank" rel="noopener">🗺️ Ouvrir dans Maps</a>
+        <button class="btn-small ghost" data-copy="#addr-salle">📋 Copier l’adresse</button>
+      </div>
+      <p class="note">Parking à quelques mètres :
+        <a href="https://maps.app.goo.gl/PRrH7uj3FjBGRYDo8?g_st=ic" target="_blank" rel="noopener">voir le parking</a> — 70 MXN/voiture, voiturier disponible.
+      </p>
+    </article>
+  </section>
+
+  <!-- APRÈS FÊTES -->
+  <section class="after">
+    <h2 style="font-family:'Playfair Display',serif; color:var(--accent); text-align:center; margin-bottom:1rem;">🎊 Après fêtes</h2>
+    <div class="after-grid">
+      <div class="card" id="bapteme">
+        <h3>5️⃣ 🤱 Baptême de Ciara</h3>
+        <p>Le lendemain du mariage, prolongeons ce beau moment en nous retrouvant pour le baptême de Ciara 💛</p>
+        <p class="note">🕗 Heure et lieu à confirmer</p>
+      </div>
+      <div class="card" id="chez-mama">
+        <h3>6️⃣ 🎉 Chez la Mama</h3>
+        <p>Après le baptême, dernier moment de convivialité chez <em>Mamá Mago</em> (la grand‑mère d’Omar) pour manger, discuter et débriefer en douceur avant de se quitter 🥲</p>
+        <p class="note">📍 Détails à venir</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA flottant vers RSVP -->
+  <div class="floating-cta">
+    <a href="rsvp.html">💌 Confirmer ma présence</a>
+  </div>
+
+  <footer>
+    <p>Avec amour, O & A • 2025</p>
+  </footer>
+
+  <script>
+    // Copier l'adresse
+    document.querySelectorAll('[data-copy]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = document.querySelector(btn.getAttribute('data-copy'));
+        const text = target.innerText.trim();
+        navigator.clipboard.writeText(text).then(() => {
+          const label = btn.textContent;
+          btn.textContent = '✔️ Copié !';
+          setTimeout(() => btn.textContent = label, 1500);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
