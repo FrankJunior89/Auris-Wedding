@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Omar & Auris – Programme</title>
+
+  <!-- Fonts (mêmes familles que l'accueil) -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- CSS global existant -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/program.css" />
+</head>
+<body>
+
+  <!-- HEADER (même markup que l'accueil) -->
+  <header class="navbar">
+    <nav>
+      <a href="index.html" class="logo-link">
+        <img src="img/backgrounds/logo-site-transparent.jpeg" alt="Logo O&A" class="logo" />
+      </a>
+      <ul class="menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">Notre Histoire</a></li>
+        <li><a href="gifts.html">Cadeaux</a></li>
+        <li><a href="padrinos.html">Padrinos</a></li>
+        <li><a href="rsvp.html">RSVP</a></li>
+        <li class="dropdown">
+          <a href="#">Plus ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="logistique.html">Logistique</a></li>
+            <li><a href="tourisme.html">Tourisme</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="program.html">Programme</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-banner" style="--hero-bg: url('img/couple/au-restaurant.jpeg'); background-image: var(--hero-bg);">
+    <div class="hero-inner">
+      <h1>Programme</h1>
+      <p class="hero-sub">Tout le déroulé des célébrations – faites glisser ➜</p>
+    </div>
+    <div class="hero-overlay"></div>
+  </section>
+
+  <!-- Ruban qui défile de gauche ➜ droite -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>PROGRAMME • MARIAGE TRADITIONNEL • MARIAGE RELIGIEUX • RÉCEPTION • APRÈS-FÊTES • BAPTÊME • CHEZ LA MAMA • </span>
+      <span>PROGRAMME • MARIAGE TRADITIONNEL • MARIAGE RELIGIEUX • RÉCEPTION • APRÈS-FÊTES • BAPTÊME • CHEZ LA MAMA • </span>
+    </div>
+  </div>
+
+  <!-- TIMELINE HORIZONTALE -->
+  <section class="timeline-section">
+    <div class="timeline-head">
+      <h2 class="tl-title">Programme</h2>
+      <div class="tl-actions">
+        <button class="tl-nav tl-prev" aria-label="Défiler à gauche">‹</button>
+        <button class="tl-nav tl-next" aria-label="Défiler à droite">›</button>
+      </div>
+    </div>
+
+    <div class="timeline" id="timeline" tabindex="0" aria-label="Timeline du programme">
+      
+      <!-- 1 -->
+      <article class="tl-card">
+        <div class="tl-dot"></div>
+        <header class="tl-header">
+          <div class="tl-emoji">📅</div>
+          <h3>1 — Mariage traditionnel / coutumier (La Dote)</h3>
+        </header>
+        <p class="tl-date"><strong>23 octobre</strong> — <span class="chip chip-warn">Lieu à confirmer</span></p>
+        <p class="tl-text">La dotation et les rituels ancestraux camerounais auront lieu.</p>
+      </article>
+
+      <!-- 2 -->
+      <article class="tl-card">
+        <div class="tl-dot"></div>
+        <header class="tl-header">
+          <div class="tl-emoji">🕊</div>
+          <h3>2 — Mariage religieux</h3>
+        </header>
+        <p class="tl-date">
+          <strong>25 octobre, 13:00</strong> — <span class="chip">Rdv 12:00–12:30</span>
+        </p>
+        <address class="tl-address">
+          Parroquia de la Divina Providencia<br/>
+          Cienfuegos 1012, Lindavista, Gustavo A. Madero, 07369 Ciudad de México, CDMX, México
+        </address>
+        <p class="tl-links">
+          👉 <a href="https://maps.app.goo.gl/MSp6CW4t11XFRjg78?g_st=ic" target="_blank" rel="noopener">Ouvrir dans Maps</a>
+        </p>
+      </article>
+
+      <!-- 3 -->
+      <article class="tl-card">
+        <div class="tl-dot"></div>
+        <header class="tl-header">
+          <div class="tl-emoji">🎉</div>
+          <h3>3 — Réception / Salle des fêtes</h3>
+        </header>
+        <p class="tl-date">
+          <strong>25 octobre</strong> — <span class="chip">Rdv 17:00</span>
+        </p>
+        <address class="tl-address">
+          Salon CEREZO<br/>
+          Valle del Cerezo 92, Valle de Aragon 1ra Secc, 57100 Cdad. Nezahualcóyotl, Méx., México
+        </address>
+        <p class="tl-links">
+          👉 <a href="https://maps.app.goo.gl/5U16n1o8M4Cv11te7?g_st=ic" target="_blank" rel="noopener">Lieu</a> ·
+          <a href="https://maps.app.goo.gl/PRrH7uj3FjBGRYDo8?g_st=ic" target="_blank" rel="noopener">Parking</a>
+        </p>
+        <p class="tl-note">À noter : parking à charge des invités (70 MXN / voiture), service voiturier disponible.</p>
+      </article>
+
+      <!-- 5 -->
+      <article class="tl-card tl-sub">
+        <div class="tl-dot"></div>
+        <header class="tl-header">
+          <div class="tl-emoji">🤱</div>
+          <h3>5 — Baptême de Ciara</h3>
+        </header>
+        <p class="tl-date">
+          <strong>Le lendemain du mariage</strong> — <span class="chip chip-warn">Heure & lieu à confirmer</span>
+        </p>
+        <p class="tl-text">Nous souhaiterions prolonger ce beau moment en nous retrouvant pour le baptême de Ciara 💛</p>
+      </article>
+
+      <!-- 6 -->
+      <article class="tl-card tl-sub">
+        <div class="tl-dot"></div>
+        <header class="tl-header">
+          <div class="tl-emoji">🎉</div>
+          <h3>6 — Chez la Mama</h3>
+        </header>
+        <p class="tl-text">
+          Suite au baptême, dernier moment de convivialité chez <strong>Mamá Mago</strong> (la grand-mère d’Omar) : manger, discuter et débriefer en douceur, avant de se quitter. 🥲
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Bande callout -->
+  <section class="callout">
+    <h3>Astuce</h3>
+    <p>Sur mobile, glissez latéralement. Sur ordinateur, utilisez les flèches ◀ ▶ ou la molette horizontale pour parcourir le programme.</p>
+  </section>
+
+  <!-- JS minimal pour les flèches -->
+  <script>
+    (function(){
+      const scroller = document.getElementById('timeline');
+      const prev = document.querySelector('.tl-prev');
+      const next = document.querySelector('.tl-next');
+      const scrollByAmount = () => Math.min(scroller.clientWidth * 0.9, 520);
+
+      prev.addEventListener('click', () => scroller.scrollBy({left: -scrollByAmount(), behavior: 'smooth'}));
+      next.addEventListener('click', () => scroller.scrollBy({left:  scrollByAmount(), behavior: 'smooth'}));
+
+      // clavier (accessibilité)
+      scroller.addEventListener('keydown', (e) => {
+        if(e.key === 'ArrowRight') scroller.scrollBy({left: 300, behavior: 'smooth'});
+        if(e.key === 'ArrowLeft')  scroller.scrollBy({left:-300, behavior: 'smooth'});
+      });
+    })();
+  </script>
+</body>
+</html>
