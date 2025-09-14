@@ -46,7 +46,7 @@
   color: #d63384;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   cursor: pointer;
 }
 
